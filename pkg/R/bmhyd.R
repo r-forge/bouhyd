@@ -1,6 +1,6 @@
 #newick2phylog function read tree in eNewick format. 
 #The input data files will be x.tre.
-newick2phylog <- function (x.tre, add.tools =FALSE, call = match.call()){ 
+newick2phylog <- function (x.tre){ 
   lvs_num<-function(x.tree){
     x.tree<-unlist(strsplit(x.tre, ""))
     lvs<-0 
@@ -191,9 +191,7 @@ newick2phylog <- function (x.tre, add.tools =FALSE, call = match.call()){
     res$droot <- unlist(lapply(res$paths, function(x) sum(dnext[x])))
     res$call <- call
     class(res) <- "phylog"
-    if (!add.tools) 
-        return(res)
-    return(newick2phylog.addtools(res))
+    return(res)
     }# end of function newick2phylog.
 
 comb<-function(n,r){
@@ -309,6 +307,8 @@ getbrnlen<-function(res){#this function gets branch length.
 
 ### The cov_mtx function will return the covaraince matrix. 
 cov_mtx<-function(bt){    
+
+
   ins_fcn<-function(ist,sqc){#finds position to insert between two parents, 
                              #for hybrdization only.
     ist<-as.numeric(unlist(strsplit(ist,"X"))[2])
@@ -531,17 +531,6 @@ MLE<-function(bt){#MLE estimators.
   return(c(bt,mu,sigma_sq))
   }#end of MLE
  
-chl_decom<-function(M){#M=LL^t, returns L^{-1}. 
-  decom<-t(chol(M))
-  return(solve(decom))
-  }
-
-BMhydcvt<-function(bt){
-  Y<-(Y-mu_hat)/sqrt(sigmasq_hat)
-  Y<-chl_decom(cov_mtx(bt))%*%Y
-  return(Y)
-  }
-
 ####################################################################
 ###################### MAIN PROGRAM ################################
 ####################################################################
@@ -574,21 +563,24 @@ BMhydcvt<-function(bt){
 #Y<-rnorm(8)
 
 # 9 taxa real data
-x.tre=c("(((1:0.35,2:0.35)10:0.5,(3:0.7,(4:0.45,(5:0.1,(6:0.1)13:0)12:0.35)11:0.25)16:0.15)18:0.15,((13:0,7:0.1)14:0.55,(8:0.2,9:0.2)15:0.45)17:0.35)19:0;")
-Y<-matrix(c( 16.00,12.00,16.00,23.00,18.00,18.00,25.00,20.00,14.00  ),ncol=1)
+#x.tre=c("(((1:0.35,2:0.35)10:0.5,(3:0.7,(4:0.45,(5:0.1,(6:0.1)13:0)12:0.35)11:0.25)16:0.15)18:0.15,((13:0,7:0.1)14:0.55,(8:0.2,9:0.2)15:0.45)17:0.35)19:0;")
+#Y<-matrix(c( 16.00,12.00,16.00,23.00,18.00,18.00,25.00,20.00,14.00  ),ncol=1)
 
 #22 taxa 
 #x.tre<-c("((((((1:0.62,(((2:0.185,(5:0.185)28:0)27:0.185,(16:0.37)34:0)33:0.15,((3:0.16,4:0.16)26:0.29,((28:0,6:0.185)29:0.03,(7:0.095,(12:0.095)24:0)23:0.12)30:0.235)37:0.07)38:0.1)39:0.05,8:0.67)41:0.07,((9:0.64,10:0.64)40:0.055,11:0.695)42:0.045)43:0.105,(((24:0,13:0.095)25:0.195,14:0.29)31:0.505,(15:0.755,((34:0,17:0.37)35:0.06,(18:0.335,19:0.335)32:0.095)36:0.325)44:0.04)45:0.05)46:0.08,(20:0.89,21:0.89)47:0.035)48:0.075,22:1)49:0;")
 #Y<-rnorm(22)
 
+
+
+
 main<-function(x.tre,Y){
-res<-newick2phylog(x.tre)
-data<-getntn(res)
-branchlength<-getbrnlen(res)###check more examples
-tipnames<-sort(names(res$droot[which(res$droot==1)]))
-nleaves<-length(tipnames)
-n<-nleaves
-one <- matrix(1,nrow=n)
+res<<-newick2phylog(x.tre)
+data<<-getntn(res)
+branchlength<<-getbrnlen(res)###check more examples
+tipnames<<-sort(names(res$droot[which(res$droot==1)]))
+nleaves<<-length(tipnames)
+n<<-nleaves
+one <<- matrix(1,nrow=n)
 SS<-optimize(NegLogLike,c(-100,100))
 mle<-MLE(SS$minimum)
 mu_hat<-mle[2]
