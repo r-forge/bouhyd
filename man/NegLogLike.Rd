@@ -17,14 +17,14 @@ NegLogLike(bt)
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+##  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+##  ~Describe the value returned
+##  If it is a LIST, use
+##  \item{comp1 }{Description of 'comp1'}
+##  \item{comp2 }{Description of 'comp2'}
+## ...
 }
 \references{
 A new comparative analysis for investigating rate
@@ -34,13 +34,13 @@ of trait evolution using phylogenetic networks. manuscript.
 Tony Jhwueng<djhwueng@nimbios.org>
 }
 \note{
-%%  ~~further notes~~
+##  ~~further notes~~
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+## ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
 ##---- Should be DIRECTLY executable !! ----
@@ -63,5 +63,4 @@ function (bt)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+

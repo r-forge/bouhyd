@@ -28,13 +28,11 @@ Maintainer:Tony Jhwueng <djhwueng@nimbios.org>
 \references{
 A new comparative analysis for investigating rate
 of trait evolution using phylogenetic networks. manuscript submmitted in Evolution. }
-~~ Optionally other standard keywords, one per line, from file KEYWORDS in ~~
-~~ the R documentation directory ~~
 \keyword{ package }
 \seealso{
-~~ Optional links to other man pages, e.g. ~~
-~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
+## Optional links to other man pages, e.g. ~~
+## \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
 }
 \examples{
-~~ simple examples of the most important functions ~~
+##simple examples of the most important functions ~~
 }

@@ -7,29 +7,23 @@ newick2phylog read phylogenetic network in eNewwick format
 \description{
 newick2phylog read phylogenetic network in eNewwick format }
 \usage{
-newick2phylog(x.tre, add.tools = FALSE, call = match.call())
+newick2phylog(x.tre)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x.tre}{
 x.tre is an network data in eNewick format
 }
-  \item{add.tools}{
-%%     ~~Describe \code{add.tools} here~~
-}
-  \item{call}{
-%%     ~~Describe \code{call} here~~
-}
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+##  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+##  ~Describe the value returned
+##  If it is a LIST, use
+##  \item{comp1 }{Description of 'comp1'}
+##  \item{comp2 }{Description of 'comp2'}
+## ...
 }
 \references{
 A new comparative analysis for investigating rate
@@ -39,13 +33,13 @@ of trait evolution using phylogenetic networks. manuscript.
 Tony Jhwueng<djhwueng@nimbios.org>
 }
 \note{
-%%  ~~further notes~~
+##  ~~further notes~~
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+## ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
 ##---- Should be DIRECTLY executable !! ----
@@ -53,7 +47,7 @@ Tony Jhwueng<djhwueng@nimbios.org>
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (x.tre, add.tools = FALSE, call = match.call()) 
+function (x.tre) 
 {
     lvs_num <- function(x.tree) {
         x.tree <- unlist(strsplit(x.tre, ""))
@@ -258,12 +252,9 @@ function (x.tre, add.tools = FALSE, call = match.call())
     res$droot <- unlist(lapply(res$paths, function(x) sum(dnext[x])))
     res$call <- call
     class(res) <- "phylog"
-    if (!add.tools) 
         return(res)
-    return(newick2phylog.addtools(res))
   }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+

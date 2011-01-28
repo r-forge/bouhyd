@@ -1,11 +1,11 @@
 Package: bmhyd
+Version: 1.0
+Date: 2011-01-28
 Type: Package
 Title: Brownian motion model for phylogenetic comparative analysis on hybridization.
-Version: 1.0
-Date: 2011-01-21
 Author: Tony Jhwueng <djhwueng@nimbios.org>
 Maintainer: Tony Jhwueng <djhwueng@nimbios.org>
 Description: Investigation the hybrid effect for evolution along a phylognenetic network.
-Depends: R(= 2.10.0)
+Depends: R(>= 2.9.0)
 License:  GPL (>= 2)
 LazyLoad: yes
